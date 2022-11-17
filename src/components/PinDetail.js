@@ -44,7 +44,7 @@ const PinDetail = ({ user }) => {
             _key: uuidv4(),
             postedBy: {
               _type: "postedBy",
-              _ref: user.uid,
+              _ref: user?.uid,
             },
           },
         ])
