@@ -16,7 +16,7 @@ const Pin = ({ pin: { save, image, postedBy, _id, destination } }) => {
 
   const user = fetchUser();
 
-  let alreadySaved = save?.filter((item) => item.postedBy._id === user.uid);
+  let alreadySaved = save?.filter((item) => item.postedBy._id === user?.uid);
 
   alreadySaved = alreadySaved?.length > 0 ? alreadySaved : [];
 
@@ -33,7 +33,7 @@ const Pin = ({ pin: { save, image, postedBy, _id, destination } }) => {
         .insert("after", "save[-1]", [
           {
             _key: uuidv4(),
-            userId: user.uid,
+            userId: user?.uid,
             postedBy: {
               _type: "postedBy",
               _ref: user?.uid,
@@ -73,7 +73,7 @@ const Pin = ({ pin: { save, image, postedBy, _id, destination } }) => {
                   <MdDownloadForOffline />
                 </a>
               </div>
-              {alreadySaved.length !== 0 ? (
+              {alreadySaved?.length !== 0 ? (
                 <button
                   type="button"
                   className="bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none"
@@ -108,7 +108,7 @@ const Pin = ({ pin: { save, image, postedBy, _id, destination } }) => {
                     : destination.slice(8)}
                 </a>
               ) : undefined}
-              {postedBy?._id === user.uid && (
+              {postedBy?._id === user?.uid && (
                 <button
                   type="button"
                   className="bg-white p-2 rounded-full w-8 h-8 flex items-center justify-center text-dark opacity-75 hover:opacity-100 outline-none"
